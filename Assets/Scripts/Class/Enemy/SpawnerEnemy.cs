@@ -18,7 +18,7 @@ public class SpawnerEnemy : MonoBehaviour
 
     private float _currentCount;
 
-    public bool CanSpawn => _currentCount < _maxCount;
+    private bool CanSpawn => _currentCount < _maxCount;
 
     private void OnEnable()
     {
