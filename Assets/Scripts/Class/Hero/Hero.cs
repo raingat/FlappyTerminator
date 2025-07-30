@@ -11,11 +11,16 @@ public class Hero : MonoBehaviour
 {
     private CollisionDetector _collisionDetector;
 
-    public event Action GameOver;
-
     private BoxCollider2D _boxCollider;
 
     private HeroMovement _heroMovement;
+
+    public event Action GameOver;
+
+    public void Reset()
+    {
+        _heroMovement.Reset();
+    }
 
     private void Awake()
     {
@@ -41,10 +46,5 @@ public class Hero : MonoBehaviour
     private void HandleCollision()
     {
         GameOver?.Invoke();
-    }
-
-    public void Reset()
-    {
-        _heroMovement.Reset();
     }
 }

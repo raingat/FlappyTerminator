@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpawnerEnemy : MonoBehaviour
 {
-    [SerializeField] private PoolEnemy _pool;
+    [SerializeField] private ObjectPool<Enemy> _pool;
 
     [SerializeField] private float _waitTime;
 
@@ -22,14 +22,12 @@ public class SpawnerEnemy : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(Spawn());
+        StartCoroutine(InstantiateObject());
     }
 
-    private void GetFromPool(Vector2 position)
+    private void Spawn(Vector2 position)
     {
         Enemy instance = _pool.GetObject(position);
-
-        instance.SetMovementPoint(_movementPoint);
 
         instance.Destroying += ReturnToPool;
 
@@ -45,7 +43,7 @@ public class SpawnerEnemy : MonoBehaviour
         _currentCount--;
     }
 
-    private IEnumerator Spawn()
+    private IEnumerator InstantiateObject()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_waitTime);
 
@@ -55,7 +53,7 @@ public class SpawnerEnemy : MonoBehaviour
             {
                 Vector2 position = new Vector2(_point.position.x, _point.position.y + Random.Range(_minCoordinateY, _maxCoordinateY));
 
-                GetFromPool(position);
+                Spawn(position);
             }
 
             yield return waitForSeconds;

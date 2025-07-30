@@ -10,11 +10,9 @@ public class Enemy : MonoBehaviour
 {
     private CollisionDetector _collisionDetector;
 
-    public event Action<Enemy> Destroying;
-
     private BoxCollider2D _boxCollider;
 
-    private Transform _movementPoint;
+    public event Action<Enemy> Destroying;
 
     private void Awake()
     {
@@ -38,15 +36,5 @@ public class Enemy : MonoBehaviour
     private void HandleCollision()
     {
         Destroying?.Invoke(this);
-    }
-
-    public void SetMovementPoint(Transform point)
-    {
-        _movementPoint = point;
-    }
-
-    public Transform GetMovementPoint()
-    {
-        return _movementPoint;
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class AnimationHero : MonoBehaviour
 {
     private static readonly int Fly = Animator.StringToHash("Fly");

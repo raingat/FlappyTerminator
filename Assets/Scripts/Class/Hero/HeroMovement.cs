@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AnimationHero))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class HeroMovement : MonoBehaviour
 {
     [SerializeField] private float _speedHorizontal;
@@ -21,6 +23,15 @@ public class HeroMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     private InputReader _inputReader = new();
+
+    public void Reset()
+    {
+        transform.position = _startPosition;
+        transform.rotation = Quaternion.identity;
+        _rigidbody.velocity = Vector2.zero;
+
+        _animation.PlayAnimationFly();
+    }
 
     private void Awake()
     {
@@ -55,14 +66,5 @@ public class HeroMovement : MonoBehaviour
         _rigidbody.velocity = new Vector2(_speedHorizontal, _speedVertical);
 
         transform.rotation = _maxRotation;
-    }
-
-    public void Reset()
-    {
-        transform.position = _startPosition;
-        transform.rotation = Quaternion.identity;
-        _rigidbody.velocity = Vector2.zero;
-
-        _animation.PlayAnimationFly();
     }
 }

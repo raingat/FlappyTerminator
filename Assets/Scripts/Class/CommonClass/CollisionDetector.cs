@@ -7,7 +7,7 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.TryGetComponent(out IInteractable interactable))
+        if (collision.transform.TryGetComponent(out IInteractable _))
             Collided?.Invoke();
     }
 }

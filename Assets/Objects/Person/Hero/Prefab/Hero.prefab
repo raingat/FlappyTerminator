@@ -249,7 +249,7 @@ MonoBehaviour:
   _maxRotationZ: 40
   _minRotationZ: -40
   _maxHeight: 6
-  _minHeight: -4
+  _minHeight: -5
 --- !u!114 &1542492980738776827
 MonoBehaviour:
   m_ObjectHideFlags: 0

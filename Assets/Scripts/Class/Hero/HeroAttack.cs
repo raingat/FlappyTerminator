@@ -7,7 +7,7 @@ public class HeroAttack : MonoBehaviour
     [SerializeField] private Transform _position;
 
     private InputReader _inputReader = new();
-    
+
     private void Update()
     {
         if (_inputReader.IsAttack())
@@ -16,6 +16,6 @@ public class HeroAttack : MonoBehaviour
 
     private void Shoot()
     {
-        _spawnerBullet.GetFromPool(_position.position, transform.rotation);
+        _spawnerBullet.Spawn(_position.position, transform.rotation);
     }
 }

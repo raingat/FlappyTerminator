@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Shoot()
     {
-        _spawnerBullet.GetFromPool(_position.position, transform.rotation);
+        _spawnerBullet.Spawn(_position.position, transform.rotation);
     }
 
     private IEnumerator Shot()

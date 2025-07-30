@@ -6,7 +6,7 @@ public class HeroTracker : MonoBehaviour
 
     [SerializeField] private float _xOffset;
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector2 position = transform.position;
 
